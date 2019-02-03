@@ -7,8 +7,8 @@ Created on 2017年9月28日
 
 from __future__ import unicode_literals
 
-import simplejson
-
+#import json
+import json
 from itest.models.pickerValues import PickerValuesModel
 from django.http import HttpResponse
 from itest.util import globalVars
@@ -16,7 +16,7 @@ from itest.models.requirement import RequirementModel
 from itest.excuteHandle.valueHandle.commonValueHandle import CommonValueHandle
 
 def addRequirement(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cases = None
     if req.has_key("cases"):
         cases=req["cases"]
@@ -37,7 +37,7 @@ def addRequirement(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
     
 def deleteRequirement(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     rId = None
     if req.has_key("rId"):
         rId=req["rId"]
@@ -55,7 +55,7 @@ def deleteRequirement(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def requirementAddPicker(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     rId = None
     name = None
     value = None
@@ -82,7 +82,7 @@ def requirementAddPicker(request):
         return HttpResponse(globalVars.responseJson("true","",picker.getDict()), content_type="application/json")
     
 def requirementDeletePicker(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     rId = None
     vId = None
     if req.has_key("rId"):
@@ -105,7 +105,7 @@ def requirementDeletePicker(request):
         return HttpResponse(globalVars.responseJson("true","",require.getDict()), content_type="application/json")
     
 def requirementGetPicker(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     rId = None
     if req.has_key("rId"):
         rId=req["rId"]

@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from itest.excuteHandle.valueHandle.commonValueHandle import CommonValueHandle
-import simplejson
+#import simplejson
 import json
 
 # from models import Users
@@ -74,7 +74,7 @@ def apiPageIndex(request,pId):
 
 
 def addApiModule(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     name = None
     pId = None
     parentId = None
@@ -112,7 +112,7 @@ def addApiModule(request):
             return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
             
 def updateApiModule(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     name = None
     parentId = None
     mId=None
@@ -153,7 +153,7 @@ def updateApiModule(request):
             return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def deleteApiModule(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     mId=None
     if req.has_key("mId"):
         mId=req["mId"]
@@ -178,7 +178,7 @@ def deleteApiModule(request):
 
 def getApiModules(request):
 
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
 
     if req["pId"]:
@@ -244,7 +244,7 @@ def getApiModules(request):
             return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def addApi(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     mId = None
     uId = None
@@ -296,7 +296,7 @@ def addApi(request):
             return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
 
 def deleteApi(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     print("~~~~~~~~")
     print(req)
@@ -318,7 +318,7 @@ def deleteApi(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def getApiList(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     mId = None
     if req.has_key("mId"):
         mId=req["mId"]
@@ -351,7 +351,7 @@ def getApiList(request):
             return HttpResponse(globalVars.responseJson("true","",context), content_type="application/json")
         
 def getApiDetail(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     if req.has_key("aId"):
         aId=req["aId"]
@@ -384,7 +384,7 @@ def getApiDetail(request):
         return HttpResponse(globalVars.responseJson("true","",context), content_type="application/json")
 
 def updateApiName(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     name = None
     if req.has_key("aId"):
@@ -406,7 +406,7 @@ def updateApiName(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateApiUrl(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     url = None
     if req.has_key("aId"):
@@ -428,7 +428,7 @@ def updateApiUrl(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateApiDec(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     dec = None
     if req.has_key("aId"):
@@ -450,7 +450,7 @@ def updateApiDec(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateApiMethod(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     method = None
     if req.has_key("aId"):
@@ -472,7 +472,7 @@ def updateApiMethod(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateApiAddHeader(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
 #     print(req)
     if req.has_key("aId"):
@@ -500,7 +500,7 @@ def updateApiAddHeader(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
 
 def updateApiDelHeader(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     hId = None
     if req.has_key("aId"):
@@ -524,7 +524,7 @@ def updateApiDelHeader(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateApiChangeHeader(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     hId = None
     direction = None
@@ -551,7 +551,7 @@ def updateApiChangeHeader(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateApiParmasType(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     parmasType = None
     if req.has_key("aId"):
@@ -572,7 +572,7 @@ def updateApiParmasType(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def updateApiAddParmas(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     if req.has_key("aId"):
         aId=req["aId"]
@@ -600,7 +600,7 @@ def updateApiAddParmas(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
 
 def updateApiDelParmas(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     pId = None
     if req.has_key("aId"):
@@ -626,7 +626,7 @@ def updateApiDelParmas(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
 
 def updateApiChangeParmas(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     pId = None
     direction = None
@@ -653,7 +653,7 @@ def updateApiChangeParmas(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateAPiSetParmas(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     if len(req) == 0:
         return HttpResponse(globalVars.responseJson("false", "数据为空"), content_type="application/json")
@@ -686,7 +686,7 @@ def updateAPiSetParmas(request):
         return HttpResponse(globalVars.responseJson("true","",resList), content_type="application/json")
 
 def updateApiResponseType(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     responseType = None
     if req.has_key("aId"):
@@ -707,7 +707,7 @@ def updateApiResponseType(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def updateApiAddResponse(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     if req.has_key("aId"):
         aId=req["aId"]
@@ -736,7 +736,7 @@ def updateApiAddResponse(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
 
 def updateApiDelResponse(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     rId = None
     if req.has_key("aId"):
@@ -761,7 +761,7 @@ def updateApiDelResponse(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
     
 def updateApiChangeResponse(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     rId = None
     direction = None
@@ -788,7 +788,7 @@ def updateApiChangeResponse(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def updateAPiSetResponse(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     if len(req) == 0:
         return HttpResponse(globalVars.responseJson("false", "数据为空"), content_type="application/json")
@@ -821,7 +821,7 @@ def updateAPiSetResponse(request):
         return HttpResponse(globalVars.responseJson("true","",resList), content_type="application/json")
 
 def apiDebug(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     r = ""
     method = ""
     header = {}
@@ -883,7 +883,7 @@ def apiDebug(request):
 
 
 def copyApi(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     aId = None
     if req.has_key("aId"):
         aId=req["aId"] 

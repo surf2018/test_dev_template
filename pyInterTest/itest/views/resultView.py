@@ -7,15 +7,15 @@ Created on 2017年9月15日
 
 from __future__ import unicode_literals
 
-import simplejson
-
+#import json
+import json
 from itest.models.testCaseResult import TestCaseResultModel
 from django.http import HttpResponse
 from itest.util import globalVars
 from itest.excuteHandle.valueHandle.commonValueHandle import CommonValueHandle
 
 def getTestCaseResult(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     reId = None
 
     if req.has_key("rId"):

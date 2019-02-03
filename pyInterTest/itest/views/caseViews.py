@@ -8,8 +8,8 @@ Created on 2017年9月12日
 from __future__ import unicode_literals
 
 
-import simplejson
-
+#import simplejson
+import json
 from itest.models.user import Users
 from itest.models.apiDefine import ApiDefine
 from itest.models.project import Project
@@ -24,7 +24,7 @@ from itest.util import globalVars
 
 
 def addCase(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     name = None
     dec = None
     pId = None
@@ -75,7 +75,7 @@ def addCase(request):
             return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
         
 def caseDetail(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
 
     if req.has_key("cId"):
@@ -93,7 +93,7 @@ def caseDetail(request):
         return HttpResponse(globalVars.responseJson("true","",case.getDict()), content_type="application/json")
 
 def updateCaseBaseInfo(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     name = None
     dec = None
@@ -132,7 +132,7 @@ def updateCaseBaseInfo(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
     
 def updateCaseHeader(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     headerData=None
 
@@ -157,7 +157,7 @@ def updateCaseHeader(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def updateCaseParmas(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     parmasData=None
     dataType=None
@@ -185,7 +185,7 @@ def updateCaseParmas(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def updateCasePicker(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     valuePicker=None
     if req.has_key("cId"):
@@ -205,7 +205,7 @@ def updateCasePicker(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def updateCaseAssert(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     preAssert=None
     otherAssert=None
@@ -239,7 +239,7 @@ def updateCaseAssert(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
     
 def updateCasePre(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     preCase=None
     preSql=None
@@ -273,7 +273,7 @@ def updateCasePre(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
     
 def updateCasePost(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     postCase=None
     postSql=None
@@ -302,7 +302,7 @@ def updateCasePost(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def deleteCase(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     if req.has_key("cId"):
         cId=req["cId"]
@@ -319,7 +319,7 @@ def deleteCase(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def copyCase(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     if req.has_key("cId"):
         cId=req["cId"]
@@ -346,7 +346,7 @@ def copyCase(request):
         return HttpResponse(globalVars.responseJson("true","",tmp), content_type="application/json")
 
 def updateCasePreSql(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     preSql=None
     if req.has_key("cId"):
@@ -370,7 +370,7 @@ def updateCasePreSql(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
     
 def updateCasePreRequirement(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     rIds=None
     if req.has_key("cId"):
@@ -393,7 +393,7 @@ def updateCasePreRequirement(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def updateCasePostSql(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     postSql=None
     if req.has_key("cId"):
@@ -417,7 +417,7 @@ def updateCasePostSql(request):
         return HttpResponse(globalVars.responseJson("true","",content), content_type="application/json")
 
 def updateCasePostRequirement(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     cId = None
     rIds = None
     if req.has_key("cId"):

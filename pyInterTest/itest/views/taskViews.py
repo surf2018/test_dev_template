@@ -7,7 +7,8 @@ Created on 2017年9月15日
 
 # from __future__ import unicode_literals
 
-import simplejson
+#import json
+import json
 
 from itest.models.project import Project
 from itest.models.task import TaskModel
@@ -26,7 +27,7 @@ from django.conf import settings
 
 
 def addTask(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     name = None
     suId = None
@@ -61,7 +62,7 @@ def addTask(request):
         return HttpResponse(globalVars.responseJson("true","",task.getDict()), content_type="application/json")
 
 def getTaskList(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     if req.has_key("pId"):
         pId=req["pId"]
@@ -81,7 +82,7 @@ def getTaskList(request):
         return HttpResponse(globalVars.responseJson("true","",re), content_type="application/json")
     
 def getTask(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     tId = None
     if req.has_key("tId"):
         tId=req["tId"]
@@ -98,7 +99,7 @@ def getTask(request):
         return HttpResponse(globalVars.responseJson("true","",task.getDict()), content_type="application/json")
     
 def deleteTask(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     tId = None
     if req.has_key("tId"):
         tId=req["tId"]
@@ -115,7 +116,7 @@ def deleteTask(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def updateTask(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     tId = None
     name = None
     suId = None
@@ -164,7 +165,7 @@ def updateTask(request):
         return HttpResponse(globalVars.responseJson("true","",task.getDict()), content_type="application/json")    
     
 def getCasesList(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     tId = None
     if req.has_key("tId"):
         tId=req["tId"]
@@ -193,7 +194,7 @@ def getCasesList(request):
         return HttpResponse(globalVars.responseJson("true","",re), content_type="application/json")  
 
 def runTask(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     tId = None
     uId = None
     if req.has_key("tId"):
@@ -223,7 +224,7 @@ def runTask(request):
         return HttpResponse(globalVars.responseJson("true","",new_task.getDict()), content_type="application/json")
     
 def getTaskHistory(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     tId = None
     if req.has_key("tId"):
         tId=req["tId"]
@@ -247,7 +248,7 @@ def getTaskHistory(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")  
     
 def getTaskHistoryReport(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     hId = None
     if req.has_key("hId"):
         hId=req["hId"]

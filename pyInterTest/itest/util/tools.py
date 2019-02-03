@@ -4,7 +4,8 @@ Created on 2018年3月6日
 @author: anonymous
 """
 import logging
-import simplejson
+#import simplejson
+import json
 import traceback
 import json
 from django.http import HttpResponse
@@ -20,7 +21,7 @@ def json_to_dict(body):
     print(body)
     re = None
     try:
-        re = simplejson.loads(body)
+        re = json.loads(body)
     except Exception as e:
         traceback.print_exc()
         logging.error(e)

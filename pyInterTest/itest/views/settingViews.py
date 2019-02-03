@@ -7,8 +7,8 @@ Created on 2017年9月15日
 
 # from __future__ import unicode_literals
 
-import simplejson,os
-
+#import json,os
+import json,os
 from itest.models.project import Project
 from itest.models.databaseSetting import DatabaseSettingModel
 from itest.models.globalValue import  GlobalValuesModel
@@ -22,7 +22,7 @@ from itest.excuteHandle.dbHandle.mysqlHandleNew import MysqlHandleNew
 from django.conf import settings
 
 def addEnv(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     name = None
     if req.has_key("name"):
@@ -48,7 +48,7 @@ def addEnv(request):
             return HttpResponse(globalVars.responseJson("true","",env.getDict()), content_type="application/json")
 
 def getEnvList(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     if req.has_key("pId"):
         pId=req["pId"]
@@ -68,7 +68,7 @@ def getEnvList(request):
         return HttpResponse(globalVars.responseJson("true","",re), content_type="application/json")
     
 def deleteEnv(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     eId = None
     if req.has_key("eId"):
         eId=req["eId"]
@@ -86,7 +86,7 @@ def deleteEnv(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def updateEnv(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     eId = None
     name = None
     if req.has_key("eId"):
@@ -108,7 +108,7 @@ def updateEnv(request):
         return HttpResponse(globalVars.responseJson("true","",env.getDict()), content_type="application/json")      
 
 def addSystemAssert(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     name = None
     key = None
     value = ""
@@ -137,7 +137,7 @@ def addSystemAssert(request):
         return HttpResponse(globalVars.responseJson("true","",publicAssert.getDict()), content_type="application/json")
     
 def deleteSystemAssert(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     sId = None
     if req.has_key("sId"):
         sId=req["sId"]
@@ -155,7 +155,7 @@ def deleteSystemAssert(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def getSystemAssertList(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     if req.has_key("pId"):
         pId=req["pId"]
@@ -174,7 +174,7 @@ def getSystemAssertList(request):
         return HttpResponse(globalVars.responseJson("true","",re), content_type="application/json")
     
 def addGlobalValues(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     name = None
     value = ""
     atype = None
@@ -202,7 +202,7 @@ def addGlobalValues(request):
         return HttpResponse(globalVars.responseJson("true","",values.getDict()), content_type="application/json")
 #     
 def deleteGlobalValues(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     gId = None
     if req.has_key("gId"):
         gId=req["gId"]
@@ -220,7 +220,7 @@ def deleteGlobalValues(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 #     
 def getGlobalValuesList(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     eId = None
     if req.has_key("eId"):
         eId=req["eId"]
@@ -239,7 +239,7 @@ def getGlobalValuesList(request):
         return HttpResponse(globalVars.responseJson("true","",re), content_type="application/json")
 
 def getSqlSetting(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     eId = None
 
     if req.has_key("eId"):
@@ -263,7 +263,7 @@ def getSqlSetting(request):
             return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
 
 def saveSqlSetting(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     eId = None
     pId = None
     sType="mysql"

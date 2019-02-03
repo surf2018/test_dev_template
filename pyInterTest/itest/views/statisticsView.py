@@ -7,7 +7,9 @@ Created on 2017年9月15日
 
 # from __future__ import unicode_literals
 
-import simplejson,datetime
+#import json,datetime
+
+import json,datetime
 
 from itest.models.apiDefine import ApiDefine
 from itest.models.testCase import TestCaseModel
@@ -21,7 +23,7 @@ from itest.excuteHandle.valueHandle.commonValueHandle import CommonValueHandle
 
 
 def getSummary(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     print("~~~~~~~~")
     print(req)
@@ -49,7 +51,7 @@ def getSummary(request):
         return HttpResponse(globalVars.responseJson("true","",data), content_type="application/json")
 
 def getChart(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
 
     print("~~~~~~~~")

@@ -7,8 +7,8 @@ Created on 2017年9月15日
 
 # from __future__ import unicode_literals  如果导入这个，代表文本使用unicode的编码
 
-import simplejson
-
+#import simplejson
+import json
 from itest.models.testSuite import Users
 from itest.models.testSuite import Project
 from itest.models.testSuite import TestSuiteModel
@@ -17,7 +17,7 @@ from itest.util import globalVars
 from itest.excuteHandle.valueHandle.commonValueHandle import CommonValueHandle
 
 def addTestSuite(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     pId = None
     uId = None
     name = None
@@ -50,7 +50,7 @@ def addTestSuite(request):
             return HttpResponse(globalVars.responseJson("true","",suite.getDict()), content_type="application/json")
         
 def getTestSuite(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     if req.has_key("suId"):
         suId = req["suId"]
@@ -67,7 +67,7 @@ def getTestSuite(request):
         return HttpResponse(globalVars.responseJson("true","",suite.getDict()), content_type="application/json")
     
 def updateTestSuiteCases(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     casesId = None
     
@@ -91,7 +91,7 @@ def updateTestSuiteCases(request):
     
     
 def updateTestSuitePre(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     preSql = None
     if req.has_key("suId"):
@@ -112,7 +112,7 @@ def updateTestSuitePre(request):
         return HttpResponse(globalVars.responseJson("true","",suite.getDict()), content_type="application/json")
 
 def updateTestSuitePost(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     postSql = None
     if req.has_key("suId"):
@@ -133,7 +133,7 @@ def updateTestSuitePost(request):
         return HttpResponse(globalVars.responseJson("true","",suite.getDict()), content_type="application/json")
     
 def deleteTestSuite(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     
     if req.has_key("suId"):
@@ -152,7 +152,7 @@ def deleteTestSuite(request):
         return HttpResponse(globalVars.responseJson("true",""), content_type="application/json")
     
 def getTestSuiteList(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
 
     try:
         pId = req["pId"]
@@ -178,7 +178,7 @@ def getTestSuiteList(request):
         return HttpResponse(globalVars.responseJson("true","",dataList), content_type="application/json")
     
 def updateTestSuiteBaseInfo(request):  
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     name = None
     dec = None
@@ -208,7 +208,7 @@ def updateTestSuiteBaseInfo(request):
 
 
 def updateSuiteRequirement(request):
-    req = simplejson.loads(request.body)
+    req = json.loads(request.body)
     suId = None
     rIds = None
     if req.has_key("suId"):
